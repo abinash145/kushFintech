@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.Select {
+  width: 444px !important;
+  margin-right: 5px;
+  z-index: 0 !important;
+}
+
+.Select.is-open {
+  z-index: 1 !important;
+}
+
+.react-select__menu {
+  position: fixed !important;
+  width: 440px !important;
+  margin: 1px;
+  z-index: 111111;
+}
