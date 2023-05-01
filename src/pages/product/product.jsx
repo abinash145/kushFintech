@@ -20,12 +20,12 @@ export function Product() {
   return (
     <div>
       <div className="container mx-auto">
-        <h1 className="mb-4">Item List</h1>
-        <div className="flex gap-4 flex-wrap mx-auto">
+        <h1 className="mb-4 text-center font-semibold text-2xl">Item List</h1>
+        <div className="flex gap-10 flex-wrap mx-auto justify-around">
           {currentItems?.map((cardData) => (
             <div
               key={cardData.id}
-              className="w-[260px] rounded-lg border shrink-0"
+              className="w-[260px] rounded-lg shrink-0 hover:scale-105 transition-all ease-in-out duration-300 cursor-pointer"
             >
               <ProductCard cardData={cardData} />
             </div>

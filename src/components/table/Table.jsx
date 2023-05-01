@@ -22,9 +22,9 @@ export default function Table({ tableData }) {
           Add Product
         </button>
       </div>
-      <table className="table-auto w-full border ">
+      <table className="table-auto w-full ">
         <thead>
-          <tr className="[&>th]:text-left [&>th]:p-4 border">
+          <tr className="[&>th]:text-left [&>th]:p-4 border-b border-dashed ">
             <th>ID</th>
             <th>Artist</th>
             <th>Action</th>
@@ -32,7 +32,7 @@ export default function Table({ tableData }) {
         </thead>
         <tbody>
           {tableData?.map((item) => (
-            <tr key={item.id} className="[&>td]:text-left [&>td]:p-4 border">
+            <tr key={item.id} className="[&>td]:text-left [&>td]:p-4">
               <td>{item.id}</td>
               <td>{item.title}</td>
               <td>

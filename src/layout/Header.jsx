@@ -8,8 +8,12 @@ function Header() {
   const dispatch = useDispatch()
   return (
     <nav className="flex justify-between p-4 container">
-      <Link to="/dashboard">Dashboard</Link>
-      <Link to="/product">Visit Website</Link>
+      <Link to="/dashboard" className="underline text-brand_primary">
+        Dashboard
+      </Link>
+      <Link to="/product" className="underline text-brand_primary">
+        Visit Website
+      </Link>
       <div>
         <Btn title="Log Out" className="" onClick={() => dispatch(logout())} />
       </div>

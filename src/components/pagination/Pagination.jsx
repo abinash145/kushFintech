@@ -18,7 +18,7 @@ const Pagination = (props) => {
       pageCount={props.pageCount}
       previousLabel={<ArrowLeftIcon className={'h-3 w-3'} />}
       renderOnZeroPageCount={null}
-      containerClassName="pagination h-20 flex justify-end items-center gap-3 text-[12px] text-slate-600 transition ease-in-out duration-300 overflow-x-auto pl-3"
+      containerClassName="pagination h-20 flex justify-center  items-center gap-3 text-[12px] text-slate-600 transition ease-in-out duration-300 overflow-x-auto pl-3"
       pageClassName="page-item inline-flex items-center justify-center w-9 h-9 border-solid border border-slate-600 border-opacity-20 rounded-full transition ease-in-out duration-300 hover:shadow-xl active:scale-105"
       pageLinkClassName="page-link inline-flex items-center justify-center w-9 h-9 "
       previousClassName="page-prev text-[6px] inline-flex items-center justify-center w-9 h-9 border-solid border border-slate-600 border-opacity-20 rounded-full"

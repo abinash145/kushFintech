@@ -16,8 +16,6 @@ function CreateForm() {
   const navigate = useNavigate()
   const {
     control,
-    watch,
-    register,
     handleSubmit,
     setValue,
     formState: { errors },
@@ -57,13 +55,7 @@ function CreateForm() {
   return (
     <>
       <div className="flex justify-between items-end mb-4">
-        <p>Produce Table</p>
-        <button
-          className={`bg-brand_primaryFade pt-[14px] pb-[12px] px-[48px] h-[44px] w-full  text-[#ffffff] rounded-[8px] text-[14px] font-[700] leading-[20px] transition-all ease-in-out duration-300 active:scale-90 hover:scale-105 hover:shadow-md select-none max-w-[200px]`}
-          onClick={() => navigate('/dashboard/create')}
-        >
-          Add Product
-        </button>
+        <p>Add Product</p>
       </div>
       <form
         className="pt-[24px] pb-[26px] flex flex-col gap-5 max-w-full"
