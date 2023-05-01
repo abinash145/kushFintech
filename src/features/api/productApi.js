@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import Cookies from 'js-cookie'
+import { saveProduct } from '../slice/appSlice'
 //This api is for CRUD with api
 export const productApi = createApi({
   reducerPath: 'product',
@@ -19,6 +20,10 @@ export const productApi = createApi({
   endpoints: (builder) => ({
     getProducts: builder.query({
       query: () => '/products',
+      onSuccess: (data, { dispatch }) => {
+        console.log('on Success')
+        dispatch(saveProduct(data))
+      },
       providesTags: ['Product'],
     }),
     getProduct: builder.query({

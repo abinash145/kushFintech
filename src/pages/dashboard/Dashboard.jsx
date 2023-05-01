@@ -12,25 +12,21 @@ function Dashboard() {
   const dispath = useDispatch()
 
   const navigate = useNavigate()
-  const { token, productData } = useSelector(appSelector)
+  const { token } = useSelector(appSelector)
   const { data } = useGetProductsQuery()
+
   useEffect(() => {
     if (!token) {
       navigate('/')
     }
   }, [token])
-  useEffect(() => {
-    if (!productData) {
-      dispath(saveProduct())
-    }
-  }, [])
 
   return (
     <div>
       <Header />
       <div className=" max-w-[800px] w-full mx-auto ">
         <Routes>
-          <Route path="/" element={<Table tableData={productData} />} />
+          <Route path="/" element={<Table tableData={data} />} />
           <Route path="/create" element={<CreateForm />} />
           <Route path="/edit/:id" element={<EditForm />} />
         </Routes>

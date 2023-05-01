@@ -1,10 +1,16 @@
 import { EditIcon, DeleteIcon } from '../../utils/icons'
 import { useNavigate } from 'react-router-dom'
 import { useDeleteProductMutation } from '../../features/api'
+import { useEffect } from 'react'
+import { toast } from 'react-toastify'
 export default function Table({ tableData }) {
   const navigate = useNavigate()
   const [deleteProduct, { data, isSuccess }] = useDeleteProductMutation()
-
+  useEffect(() => {
+    if (isSuccess) {
+      toast('Delete Successfully in Api')
+    }
+  }, [isSuccess])
   return (
     <>
       <div className="flex justify-between items-end mb-4">

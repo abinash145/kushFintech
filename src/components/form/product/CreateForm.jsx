@@ -8,7 +8,8 @@ import {
 import Btn from '../../button/Btn'
 import Input from '../../input/Input'
 import Select from 'react-select'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { toast } from 'react-toastify'
 
 function CreateForm() {
   const dispatch = useDispatch()
@@ -22,7 +23,10 @@ function CreateForm() {
     formState: { errors },
   } = useForm()
   const { data: categoriesData } = useGetCategoriesQuery()
-  const [addProduct, { data }] = useAddProductMutation()
+  const [
+    addProduct,
+    { data, isError, isSuccess, error, isLoading },
+  ] = useAddProductMutation()
   const [imgUrl, setImgUrl] = useState(null)
   const handleFileChange = (e) => {
     const file = e.target.files[0]
@@ -30,6 +34,15 @@ function CreateForm() {
     setImgUrl(imageUrl)
     setValue('image', e.target.files[0])
   }
+  useEffect(() => {
+    if (isSuccess) {
+      toast('New Product Added')
+      navigate(`/dashboard`)
+    }
+    if (error) {
+      toast(error.data)
+    }
+  }, [isError, isSuccess, error])
   const onSubmit = (data) => {
     console.log(data)
     const formData = new FormData()
@@ -210,7 +223,11 @@ function CreateForm() {
           </div>
         </div>
 
-        <Btn title="Submit" className="" disabled={false} />
+        <Btn
+          title={isLoading ? 'Submitting...' : 'Submit'}
+          className=""
+          disabled={isLoading ? true : false}
+        />
       </form>
     </>
   )

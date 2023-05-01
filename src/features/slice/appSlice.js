@@ -32,5 +32,5 @@ export const appSlice = createSlice({
   },
 })
 
-export const { clearState, login, logout } = appSlice.actions
+export const { clearState, login, logout, saveProduct } = appSlice.actions
 export const appSelector = (state) => state.app

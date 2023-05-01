@@ -9,7 +9,8 @@ import {
 import Btn from '../../button/Btn'
 import Input from '../../input/Input'
 import Select from 'react-select'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { toast } from 'react-toastify'
 
 function EditForm() {
   const { id } = useParams()
@@ -23,13 +24,25 @@ function EditForm() {
     setValue,
     formState: { errors },
   } = useForm()
+  //getting data from api
   const { data: categoriesData } = useGetCategoriesQuery()
   const { data: productDetail } = useGetProductQuery({ id })
-  const [editProduct, { data }] = useEditProductMutation()
+  const [
+    editProduct,
+    { data, isError, isSuccess, error, isLoading },
+  ] = useEditProductMutation()
+  useEffect(() => {
+    if (isSuccess) {
+      toast('Product Detail Change')
+      navigate(`/dashboard`)
+    }
+    if (error) {
+      toast(error.data)
+    }
+  }, [isError, isSuccess, error])
   if (!productDetail) {
     return <></>
   }
-
   const handleFileChange = (e) => {
     const file = e.target.files[0]
     const imageUrl = URL.createObjectURL(file)
@@ -195,7 +208,6 @@ function EditForm() {
             )}
           />
         </div>
-
         <div
           className={`flex flex-col justify-start items-start gap-1 w-full transition-all ease-in-out duration-700 translate-x-0 `}
         >
@@ -224,8 +236,11 @@ function EditForm() {
             </label>
           </>
         </div>
-
-        <Btn title="Submit" className="" disabled={false} />
+        <Btn
+          title={isLoading ? 'Submitting...' : 'Submit'}
+          className=""
+          disabled={isLoading ? true : false}
+        />
       </form>
     </>
   )
